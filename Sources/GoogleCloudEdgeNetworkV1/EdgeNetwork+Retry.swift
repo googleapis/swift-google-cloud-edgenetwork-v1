@@ -23,52 +23,44 @@ import GoogleCloudWkt
 import GoogleLongrunning
 import GoogleRpc
 import GoogleCloudGax
-import struct Logging.Logger
 
 extension Clients {
-  final class EdgeNetworkLogging: EdgeNetworkStub {
+  final class EdgeNetworkRetry: EdgeNetworkStub {
     let inner: any EdgeNetworkStub
-    let logger: Logger
+    let options: GoogleCloudGax.ClientOptions
 
-    public init(_ inner: any EdgeNetworkStub, logger: Logger) {
-      var logger = logger
-      logger[metadataKey: "gcp.artifact.id"] = "google-cloud-edgenetwork-v1"
-      logger[metadataKey: "gcp.client.service"] = "edgenetwork"
-      logger[metadataKey: "gcp.experimental.swift.client"] = "EdgeNetwork"
+    public init(_ inner: any EdgeNetworkStub, options: GoogleCloudGax.ClientOptions) {
       self.inner = inner
-      self.logger = logger
+      self.options = options
     }
 
     func _intercept<Input, Output>(
       request: Input,
       options: GoogleCloudGax.RequestOptions,
-      name: Swift.String,
+      idempotent: Swift.Bool,
       action: (Input, GoogleCloudGax.RequestOptions) async throws -> Output,
     ) async throws -> Output {
-      var logger = logger
-      logger[metadataKey: "gcp.experimental.swift.request.id"] = "\(UUID())"
-      logger[metadataKey: "gcp.experimental.swift.method"] = .string(name)
-      logger.debug("enter  : \(request) \(options)")
-      do {
-        let output = try await action(request, options)
-        logger.debug("success: \(request) \(options) \(output)")
-        return output
-      } catch let error {
-        logger.debug("error  : \(request) \(options) \(error)")
-        throw error
+      let loop = GoogleCloudGax._RetryLoop(
+        options: options, withDefault: self.options, idempotent: idempotent,
+      )
+      let attempt = { (attemptTimeout: Swift.Duration?) async throws -> Output in
+        var attemptOptions = options
+        attemptOptions.attemptTimeout = attemptTimeout
+        return try await action(request, attemptOptions)
       }
+      return try await loop.run(attempt: attempt)
     }
 
     public func initializeZone(
       request: InitializeZoneRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.InitializeZoneResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "initializeZone",
+        idempotent: false,
         action: {
           (r: InitializeZoneRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.InitializeZoneResponse
+            -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse
           in
           return try await self.inner.initializeZone(request: r, options: o)
         })
@@ -76,14 +68,14 @@ extension Clients {
 
     public func listZones(
       request: ListZonesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListZonesResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListZonesResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "listZones",
+        idempotent: true,
         action: {
           (r: ListZonesRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.ListZonesResponse
+            -> GoogleCloudEdgeNetworkV1.ListZonesResponse
           in
           return try await self.inner.listZones(request: r, options: o)
         })
@@ -91,14 +83,14 @@ extension Clients {
 
     public func getZone(
       request: GetZoneRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Zone {
+    ) async throws -> GoogleCloudEdgeNetworkV1.Zone {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getZone",
+        idempotent: true,
         action: {
           (r: GetZoneRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.Zone
+            -> GoogleCloudEdgeNetworkV1.Zone
           in
           return try await self.inner.getZone(request: r, options: o)
         })
@@ -106,14 +98,14 @@ extension Clients {
 
     public func listNetworks(
       request: ListNetworksRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListNetworksResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListNetworksResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "listNetworks",
+        idempotent: true,
         action: {
           (r: ListNetworksRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.ListNetworksResponse
+            -> GoogleCloudEdgeNetworkV1.ListNetworksResponse
           in
           return try await self.inner.listNetworks(request: r, options: o)
         })
@@ -121,14 +113,14 @@ extension Clients {
 
     public func getNetwork(
       request: GetNetworkRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Network {
+    ) async throws -> GoogleCloudEdgeNetworkV1.Network {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getNetwork",
+        idempotent: true,
         action: {
           (r: GetNetworkRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.Network
+            -> GoogleCloudEdgeNetworkV1.Network
           in
           return try await self.inner.getNetwork(request: r, options: o)
         })
@@ -136,14 +128,14 @@ extension Clients {
 
     public func diagnoseNetwork(
       request: DiagnoseNetworkRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "diagnoseNetwork",
+        idempotent: true,
         action: {
           (r: DiagnoseNetworkRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse
+            -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse
           in
           return try await self.inner.diagnoseNetwork(request: r, options: o)
         })
@@ -155,7 +147,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "createNetwork",
+        idempotent: false,
         action: {
           (r: CreateNetworkRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -170,7 +162,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "deleteNetwork",
+        idempotent: false,
         action: {
           (r: DeleteNetworkRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -181,14 +173,14 @@ extension Clients {
 
     public func listSubnets(
       request: ListSubnetsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListSubnetsResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "listSubnets",
+        idempotent: true,
         action: {
           (r: ListSubnetsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.ListSubnetsResponse
+            -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse
           in
           return try await self.inner.listSubnets(request: r, options: o)
         })
@@ -196,14 +188,14 @@ extension Clients {
 
     public func getSubnet(
       request: GetSubnetRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Subnet {
+    ) async throws -> GoogleCloudEdgeNetworkV1.Subnet {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getSubnet",
+        idempotent: true,
         action: {
           (r: GetSubnetRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.Subnet
+            -> GoogleCloudEdgeNetworkV1.Subnet
           in
           return try await self.inner.getSubnet(request: r, options: o)
         })
@@ -215,7 +207,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "createSubnet",
+        idempotent: false,
         action: {
           (r: CreateSubnetRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -230,7 +222,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "updateSubnet",
+        idempotent: false,
         action: {
           (r: UpdateSubnetRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -245,7 +237,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "deleteSubnet",
+        idempotent: false,
         action: {
           (r: DeleteSubnetRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -256,14 +248,14 @@ extension Clients {
 
     public func listInterconnects(
       request: ListInterconnectsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "listInterconnects",
+        idempotent: true,
         action: {
           (r: ListInterconnectsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse
+            -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse
           in
           return try await self.inner.listInterconnects(request: r, options: o)
         })
@@ -271,14 +263,14 @@ extension Clients {
 
     public func getInterconnect(
       request: GetInterconnectRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Interconnect {
+    ) async throws -> GoogleCloudEdgeNetworkV1.Interconnect {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getInterconnect",
+        idempotent: true,
         action: {
           (r: GetInterconnectRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.Interconnect
+            -> GoogleCloudEdgeNetworkV1.Interconnect
           in
           return try await self.inner.getInterconnect(request: r, options: o)
         })
@@ -286,14 +278,14 @@ extension Clients {
 
     public func diagnoseInterconnect(
       request: DiagnoseInterconnectRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "diagnoseInterconnect",
+        idempotent: true,
         action: {
           (r: DiagnoseInterconnectRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse
+            -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse
           in
           return try await self.inner.diagnoseInterconnect(request: r, options: o)
         })
@@ -301,14 +293,14 @@ extension Clients {
 
     public func listInterconnectAttachments(
       request: ListInterconnectAttachmentsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "listInterconnectAttachments",
+        idempotent: true,
         action: {
           (r: ListInterconnectAttachmentsRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse
+            -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse
           in
           return try await self.inner.listInterconnectAttachments(request: r, options: o)
         })
@@ -316,14 +308,14 @@ extension Clients {
 
     public func getInterconnectAttachment(
       request: GetInterconnectAttachmentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.InterconnectAttachment {
+    ) async throws -> GoogleCloudEdgeNetworkV1.InterconnectAttachment {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getInterconnectAttachment",
+        idempotent: true,
         action: {
           (r: GetInterconnectAttachmentRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.InterconnectAttachment
+            -> GoogleCloudEdgeNetworkV1.InterconnectAttachment
           in
           return try await self.inner.getInterconnectAttachment(request: r, options: o)
         })
@@ -335,7 +327,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "createInterconnectAttachment",
+        idempotent: false,
         action: {
           (r: CreateInterconnectAttachmentRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -350,7 +342,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "deleteInterconnectAttachment",
+        idempotent: false,
         action: {
           (r: DeleteInterconnectAttachmentRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -361,14 +353,14 @@ extension Clients {
 
     public func listRouters(
       request: ListRoutersRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListRoutersResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListRoutersResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "listRouters",
+        idempotent: true,
         action: {
           (r: ListRoutersRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.ListRoutersResponse
+            -> GoogleCloudEdgeNetworkV1.ListRoutersResponse
           in
           return try await self.inner.listRouters(request: r, options: o)
         })
@@ -376,14 +368,14 @@ extension Clients {
 
     public func getRouter(
       request: GetRouterRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Router {
+    ) async throws -> GoogleCloudEdgeNetworkV1.Router {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getRouter",
+        idempotent: true,
         action: {
           (r: GetRouterRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.Router
+            -> GoogleCloudEdgeNetworkV1.Router
           in
           return try await self.inner.getRouter(request: r, options: o)
         })
@@ -391,14 +383,14 @@ extension Clients {
 
     public func diagnoseRouter(
       request: DiagnoseRouterRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse {
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse {
       try await self._intercept(
         request: request,
         options: options,
-        name: "diagnoseRouter",
+        idempotent: true,
         action: {
           (r: DiagnoseRouterRequest, o: GoogleCloudGax.RequestOptions) async throws
-            -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse
+            -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse
           in
           return try await self.inner.diagnoseRouter(request: r, options: o)
         })
@@ -410,7 +402,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "createRouter",
+        idempotent: false,
         action: {
           (r: CreateRouterRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -425,7 +417,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "updateRouter",
+        idempotent: false,
         action: {
           (r: UpdateRouterRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -440,7 +432,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "deleteRouter",
+        idempotent: false,
         action: {
           (r: DeleteRouterRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -455,7 +447,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "listLocations",
+        idempotent: true,
         action: {
           (r: GoogleCloudLocation.ListLocationsRequest, o: GoogleCloudGax.RequestOptions)
             async throws -> GoogleCloudLocation.ListLocationsResponse
@@ -470,7 +462,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getLocation",
+        idempotent: true,
         action: {
           (r: GoogleCloudLocation.GetLocationRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleCloudLocation.Location
@@ -485,7 +477,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "listOperations",
+        idempotent: true,
         action: {
           (r: GoogleLongrunning.ListOperationsRequest, o: GoogleCloudGax.RequestOptions)
             async throws -> GoogleLongrunning.ListOperationsResponse
@@ -500,7 +492,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "getOperation",
+        idempotent: true,
         action: {
           (r: GoogleLongrunning.GetOperationRequest, o: GoogleCloudGax.RequestOptions) async throws
             -> GoogleLongrunning.Operation
@@ -515,7 +507,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "deleteOperation",
+        idempotent: false,
         action: {
           (r: GoogleLongrunning.DeleteOperationRequest, o: GoogleCloudGax.RequestOptions)
             async throws -> Void in
@@ -529,7 +521,7 @@ extension Clients {
       try await self._intercept(
         request: request,
         options: options,
-        name: "cancelOperation",
+        idempotent: false,
         action: {
           (r: GoogleLongrunning.CancelOperationRequest, o: GoogleCloudGax.RequestOptions)
             async throws -> Void in

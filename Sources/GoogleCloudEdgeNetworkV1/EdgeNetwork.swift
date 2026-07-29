@@ -48,7 +48,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_InitializeZone")
   public func initializeZone(
     request: InitializeZoneRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.InitializeZoneResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse {
     try await self.inner.initializeZone(request: request, options: options)
   }
 
@@ -59,7 +59,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   @available(*, deprecated)
   public func listZones(
     request: ListZonesRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListZonesResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListZonesResponse {
     try await self.inner.listZones(request: request, options: options)
   }
 
@@ -72,7 +72,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
     byItem: ListZonesRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Zone, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListZonesResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListZonesResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listZones(request: request, options: options)
@@ -87,7 +87,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   @available(*, deprecated)
   public func getZone(
     request: GetZoneRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Zone {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Zone {
     try await self.inner.getZone(request: request, options: options)
   }
 
@@ -96,7 +96,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_ListNetworks")
   public func listNetworks(
     request: ListNetworksRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListNetworksResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListNetworksResponse {
     try await self.inner.listNetworks(request: request, options: options)
   }
 
@@ -107,7 +107,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
     byItem: ListNetworksRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Network, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListNetworksResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListNetworksResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listNetworks(request: request, options: options)
@@ -120,7 +120,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_GetNetwork")
   public func getNetwork(
     request: GetNetworkRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Network {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Network {
     try await self.inner.getNetwork(request: request, options: options)
   }
 
@@ -129,7 +129,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_DiagnoseNetwork")
   public func diagnoseNetwork(
     request: DiagnoseNetworkRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse {
     try await self.inner.diagnoseNetwork(request: request, options: options)
   }
 
@@ -256,7 +256,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_ListSubnets")
   public func listSubnets(
     request: ListSubnetsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListSubnetsResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse {
     try await self.inner.listSubnets(request: request, options: options)
   }
 
@@ -267,7 +267,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
     byItem: ListSubnetsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Subnet, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListSubnetsResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listSubnets(request: request, options: options)
@@ -280,7 +280,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_GetSubnet")
   public func getSubnet(
     request: GetSubnetRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Subnet {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Subnet {
     try await self.inner.getSubnet(request: request, options: options)
   }
 
@@ -470,7 +470,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_ListInterconnects")
   public func listInterconnects(
     request: ListInterconnectsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse {
     try await self.inner.listInterconnects(request: request, options: options)
   }
 
@@ -481,7 +481,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
     byItem: ListInterconnectsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Interconnect, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listInterconnects(request: request, options: options)
@@ -494,7 +494,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_GetInterconnect")
   public func getInterconnect(
     request: GetInterconnectRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Interconnect {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Interconnect {
     try await self.inner.getInterconnect(request: request, options: options)
   }
 
@@ -503,7 +503,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_DiagnoseInterconnect")
   public func diagnoseInterconnect(
     request: DiagnoseInterconnectRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse {
     try await self.inner.diagnoseInterconnect(request: request, options: options)
   }
 
@@ -512,7 +512,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_ListInterconnectAttachments")
   public func listInterconnectAttachments(
     request: ListInterconnectAttachmentsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse {
     try await self.inner.listInterconnectAttachments(request: request, options: options)
   }
 
@@ -524,7 +524,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   ) throws -> any AsyncSequence<InterconnectAttachment, Swift.Error> {
     let listRpc = {
       (token: Swift.String) async throws
-        -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse in
+        -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listInterconnectAttachments(request: request, options: options)
@@ -537,7 +537,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_GetInterconnectAttachment")
   public func getInterconnectAttachment(
     request: GetInterconnectAttachmentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.InterconnectAttachment {
+  ) async throws -> GoogleCloudEdgeNetworkV1.InterconnectAttachment {
     try await self.inner.getInterconnectAttachment(request: request, options: options)
   }
 
@@ -665,7 +665,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_ListRouters")
   public func listRouters(
     request: ListRoutersRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListRoutersResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListRoutersResponse {
     try await self.inner.listRouters(request: request, options: options)
   }
 
@@ -676,7 +676,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
     byItem: ListRoutersRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Router, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListRoutersResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListRoutersResponse in
       var request = byItem
       request.pageToken = token
       return try await self.listRouters(request: request, options: options)
@@ -689,7 +689,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_GetRouter")
   public func getRouter(
     request: GetRouterRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Router {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Router {
     try await self.inner.getRouter(request: request, options: options)
   }
 
@@ -698,7 +698,7 @@ public class EdgeNetworkClient: Clients.EdgeNetworkProtocol {
   /// @Snippet(path: "EdgeNetwork_DiagnoseRouter")
   public func diagnoseRouter(
     request: DiagnoseRouterRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse {
     try await self.inner.diagnoseRouter(request: request, options: options)
   }
 
@@ -987,17 +987,17 @@ extension Clients {
   public protocol EdgeNetworkProtocol {
     /// See `EdgeNetworkClient.initializeZone`.
     func initializeZone(request: InitializeZoneRequest) async throws
-      -> GoogleCloudEdgenetworkV1.InitializeZoneResponse
+      -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse
 
     /// See `EdgeNetworkClient.initializeZone`.
     func initializeZone(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.InitializeZoneResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse
 
     /// See `EdgeNetworkClient.listZones`.
     @available(*, deprecated)
     func listZones(request: ListZonesRequest) async throws
-      -> GoogleCloudEdgenetworkV1.ListZonesResponse
+      -> GoogleCloudEdgeNetworkV1.ListZonesResponse
 
     /// See `EdgeNetworkClient.listZones`.
     @available(*, deprecated)
@@ -1013,17 +1013,17 @@ extension Clients {
 
     /// See `EdgeNetworkClient.getZone`.
     @available(*, deprecated)
-    func getZone(request: GetZoneRequest) async throws -> GoogleCloudEdgenetworkV1.Zone
+    func getZone(request: GetZoneRequest) async throws -> GoogleCloudEdgeNetworkV1.Zone
 
     /// See `EdgeNetworkClient.getZone`.
     @available(*, deprecated)
     func getZone(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.Zone
+    ) async throws -> GoogleCloudEdgeNetworkV1.Zone
 
     /// See `EdgeNetworkClient.listNetworks`.
     func listNetworks(request: ListNetworksRequest) async throws
-      -> GoogleCloudEdgenetworkV1.ListNetworksResponse
+      -> GoogleCloudEdgeNetworkV1.ListNetworksResponse
 
     /// See `EdgeNetworkClient.listNetworks`.
     func listNetworks(
@@ -1036,21 +1036,21 @@ extension Clients {
     ) throws -> any AsyncSequence<Network, Swift.Error>
 
     /// See `EdgeNetworkClient.getNetwork`.
-    func getNetwork(request: GetNetworkRequest) async throws -> GoogleCloudEdgenetworkV1.Network
+    func getNetwork(request: GetNetworkRequest) async throws -> GoogleCloudEdgeNetworkV1.Network
 
     /// See `EdgeNetworkClient.getNetwork`.
     func getNetwork(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.Network
+    ) async throws -> GoogleCloudEdgeNetworkV1.Network
 
     /// See `EdgeNetworkClient.diagnoseNetwork`.
     func diagnoseNetwork(request: DiagnoseNetworkRequest) async throws
-      -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse
+      -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse
 
     /// See `EdgeNetworkClient.diagnoseNetwork`.
     func diagnoseNetwork(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse
 
     /// See `EdgeNetworkClient.createNetwork`.
     func createNetwork(request: CreateNetworkRequest) async throws -> GoogleLongrunning.Operation
@@ -1080,7 +1080,7 @@ extension Clients {
 
     /// See `EdgeNetworkClient.listSubnets`.
     func listSubnets(request: ListSubnetsRequest) async throws
-      -> GoogleCloudEdgenetworkV1.ListSubnetsResponse
+      -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse
 
     /// See `EdgeNetworkClient.listSubnets`.
     func listSubnets(
@@ -1093,12 +1093,12 @@ extension Clients {
     ) throws -> any AsyncSequence<Subnet, Swift.Error>
 
     /// See `EdgeNetworkClient.getSubnet`.
-    func getSubnet(request: GetSubnetRequest) async throws -> GoogleCloudEdgenetworkV1.Subnet
+    func getSubnet(request: GetSubnetRequest) async throws -> GoogleCloudEdgeNetworkV1.Subnet
 
     /// See `EdgeNetworkClient.getSubnet`.
     func getSubnet(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.Subnet
+    ) async throws -> GoogleCloudEdgeNetworkV1.Subnet
 
     /// See `EdgeNetworkClient.createSubnet`.
     func createSubnet(request: CreateSubnetRequest) async throws -> GoogleLongrunning.Operation
@@ -1141,7 +1141,7 @@ extension Clients {
 
     /// See `EdgeNetworkClient.listInterconnects`.
     func listInterconnects(request: ListInterconnectsRequest) async throws
-      -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse
+      -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse
 
     /// See `EdgeNetworkClient.listInterconnects`.
     func listInterconnects(
@@ -1155,25 +1155,25 @@ extension Clients {
 
     /// See `EdgeNetworkClient.getInterconnect`.
     func getInterconnect(request: GetInterconnectRequest) async throws
-      -> GoogleCloudEdgenetworkV1.Interconnect
+      -> GoogleCloudEdgeNetworkV1.Interconnect
 
     /// See `EdgeNetworkClient.getInterconnect`.
     func getInterconnect(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.Interconnect
+    ) async throws -> GoogleCloudEdgeNetworkV1.Interconnect
 
     /// See `EdgeNetworkClient.diagnoseInterconnect`.
     func diagnoseInterconnect(request: DiagnoseInterconnectRequest) async throws
-      -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse
+      -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse
 
     /// See `EdgeNetworkClient.diagnoseInterconnect`.
     func diagnoseInterconnect(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse
 
     /// See `EdgeNetworkClient.listInterconnectAttachments`.
     func listInterconnectAttachments(request: ListInterconnectAttachmentsRequest) async throws
-      -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse
+      -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse
 
     /// See `EdgeNetworkClient.listInterconnectAttachments`.
     func listInterconnectAttachments(
@@ -1187,12 +1187,12 @@ extension Clients {
 
     /// See `EdgeNetworkClient.getInterconnectAttachment`.
     func getInterconnectAttachment(request: GetInterconnectAttachmentRequest) async throws
-      -> GoogleCloudEdgenetworkV1.InterconnectAttachment
+      -> GoogleCloudEdgeNetworkV1.InterconnectAttachment
 
     /// See `EdgeNetworkClient.getInterconnectAttachment`.
     func getInterconnectAttachment(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.InterconnectAttachment
+    ) async throws -> GoogleCloudEdgeNetworkV1.InterconnectAttachment
 
     /// See `EdgeNetworkClient.createInterconnectAttachment`.
     func createInterconnectAttachment(request: CreateInterconnectAttachmentRequest) async throws
@@ -1224,7 +1224,7 @@ extension Clients {
 
     /// See `EdgeNetworkClient.listRouters`.
     func listRouters(request: ListRoutersRequest) async throws
-      -> GoogleCloudEdgenetworkV1.ListRoutersResponse
+      -> GoogleCloudEdgeNetworkV1.ListRoutersResponse
 
     /// See `EdgeNetworkClient.listRouters`.
     func listRouters(
@@ -1237,21 +1237,21 @@ extension Clients {
     ) throws -> any AsyncSequence<Router, Swift.Error>
 
     /// See `EdgeNetworkClient.getRouter`.
-    func getRouter(request: GetRouterRequest) async throws -> GoogleCloudEdgenetworkV1.Router
+    func getRouter(request: GetRouterRequest) async throws -> GoogleCloudEdgeNetworkV1.Router
 
     /// See `EdgeNetworkClient.getRouter`.
     func getRouter(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.Router
+    ) async throws -> GoogleCloudEdgeNetworkV1.Router
 
     /// See `EdgeNetworkClient.diagnoseRouter`.
     func diagnoseRouter(request: DiagnoseRouterRequest) async throws
-      -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse
+      -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse
 
     /// See `EdgeNetworkClient.diagnoseRouter`.
     func diagnoseRouter(
       name: Swift.String,
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse
 
     /// See `EdgeNetworkClient.createRouter`.
     func createRouter(request: CreateRouterRequest) async throws -> GoogleLongrunning.Operation
@@ -1339,13 +1339,13 @@ extension Clients {
     /// See `EdgeNetworkClient.initializeZone`.
     func initializeZone(
       request: InitializeZoneRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.InitializeZoneResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse
 
     /// See `EdgeNetworkClient.listZones`.
     @available(*, deprecated)
     func listZones(
       request: ListZonesRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListZonesResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListZonesResponse
 
     /// See `EdgeNetworkClient.listZones`.
     @available(*, deprecated)
@@ -1357,12 +1357,12 @@ extension Clients {
     @available(*, deprecated)
     func getZone(
       request: GetZoneRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Zone
+    ) async throws -> GoogleCloudEdgeNetworkV1.Zone
 
     /// See `EdgeNetworkClient.listNetworks`.
     func listNetworks(
       request: ListNetworksRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListNetworksResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListNetworksResponse
 
     /// See `EdgeNetworkClient.listNetworks`.
     func listNetworks(
@@ -1372,12 +1372,12 @@ extension Clients {
     /// See `EdgeNetworkClient.getNetwork`.
     func getNetwork(
       request: GetNetworkRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Network
+    ) async throws -> GoogleCloudEdgeNetworkV1.Network
 
     /// See `EdgeNetworkClient.diagnoseNetwork`.
     func diagnoseNetwork(
       request: DiagnoseNetworkRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse
 
     /// See `EdgeNetworkClient.createNetwork`.
     func createNetwork(
@@ -1402,7 +1402,7 @@ extension Clients {
     /// See `EdgeNetworkClient.listSubnets`.
     func listSubnets(
       request: ListSubnetsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListSubnetsResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse
 
     /// See `EdgeNetworkClient.listSubnets`.
     func listSubnets(
@@ -1412,7 +1412,7 @@ extension Clients {
     /// See `EdgeNetworkClient.getSubnet`.
     func getSubnet(
       request: GetSubnetRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Subnet
+    ) async throws -> GoogleCloudEdgeNetworkV1.Subnet
 
     /// See `EdgeNetworkClient.createSubnet`.
     func createSubnet(
@@ -1447,7 +1447,7 @@ extension Clients {
     /// See `EdgeNetworkClient.listInterconnects`.
     func listInterconnects(
       request: ListInterconnectsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse
 
     /// See `EdgeNetworkClient.listInterconnects`.
     func listInterconnects(
@@ -1457,17 +1457,17 @@ extension Clients {
     /// See `EdgeNetworkClient.getInterconnect`.
     func getInterconnect(
       request: GetInterconnectRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Interconnect
+    ) async throws -> GoogleCloudEdgeNetworkV1.Interconnect
 
     /// See `EdgeNetworkClient.diagnoseInterconnect`.
     func diagnoseInterconnect(
       request: DiagnoseInterconnectRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse
 
     /// See `EdgeNetworkClient.listInterconnectAttachments`.
     func listInterconnectAttachments(
       request: ListInterconnectAttachmentsRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse
 
     /// See `EdgeNetworkClient.listInterconnectAttachments`.
     func listInterconnectAttachments(
@@ -1477,7 +1477,7 @@ extension Clients {
     /// See `EdgeNetworkClient.getInterconnectAttachment`.
     func getInterconnectAttachment(
       request: GetInterconnectAttachmentRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.InterconnectAttachment
+    ) async throws -> GoogleCloudEdgeNetworkV1.InterconnectAttachment
 
     /// See `EdgeNetworkClient.createInterconnectAttachment`.
     func createInterconnectAttachment(
@@ -1502,7 +1502,7 @@ extension Clients {
     /// See `EdgeNetworkClient.listRouters`.
     func listRouters(
       request: ListRoutersRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.ListRoutersResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.ListRoutersResponse
 
     /// See `EdgeNetworkClient.listRouters`.
     func listRouters(
@@ -1512,12 +1512,12 @@ extension Clients {
     /// See `EdgeNetworkClient.getRouter`.
     func getRouter(
       request: GetRouterRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.Router
+    ) async throws -> GoogleCloudEdgeNetworkV1.Router
 
     /// See `EdgeNetworkClient.diagnoseRouter`.
     func diagnoseRouter(
       request: DiagnoseRouterRequest, options: GoogleCloudGax.RequestOptions
-    ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse
+    ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse
 
     /// See `EdgeNetworkClient.createRouter`.
     func createRouter(
@@ -1589,20 +1589,20 @@ extension Clients {
 // Default implementations
 extension Clients.EdgeNetworkProtocol {
   public func initializeZone(request: InitializeZoneRequest) async throws
-    -> GoogleCloudEdgenetworkV1.InitializeZoneResponse
+    -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse
   {
     try await self.initializeZone(request: request, options: .init())
   }
 
   public func initializeZone(
     request: InitializeZoneRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.InitializeZoneResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func initializeZone(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.InitializeZoneResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.InitializeZoneResponse {
     let request = InitializeZoneRequest().with {
       $0.name = name
     }
@@ -1610,14 +1610,14 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func listZones(request: ListZonesRequest) async throws
-    -> GoogleCloudEdgenetworkV1.ListZonesResponse
+    -> GoogleCloudEdgeNetworkV1.ListZonesResponse
   {
     try await self.listZones(request: request, options: .init())
   }
 
   public func listZones(
     request: ListZonesRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListZonesResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListZonesResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -1631,7 +1631,7 @@ extension Clients.EdgeNetworkProtocol {
     byItem: ListZonesRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Zone, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListZonesResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListZonesResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -1646,19 +1646,19 @@ extension Clients.EdgeNetworkProtocol {
     return try self.listZones(byItem: request)
   }
 
-  public func getZone(request: GetZoneRequest) async throws -> GoogleCloudEdgenetworkV1.Zone {
+  public func getZone(request: GetZoneRequest) async throws -> GoogleCloudEdgeNetworkV1.Zone {
     try await self.getZone(request: request, options: .init())
   }
 
   public func getZone(
     request: GetZoneRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Zone {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Zone {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getZone(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.Zone {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Zone {
     let request = GetZoneRequest().with {
       $0.name = name
     }
@@ -1666,14 +1666,14 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func listNetworks(request: ListNetworksRequest) async throws
-    -> GoogleCloudEdgenetworkV1.ListNetworksResponse
+    -> GoogleCloudEdgeNetworkV1.ListNetworksResponse
   {
     try await self.listNetworks(request: request, options: .init())
   }
 
   public func listNetworks(
     request: ListNetworksRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListNetworksResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListNetworksResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -1687,7 +1687,7 @@ extension Clients.EdgeNetworkProtocol {
     byItem: ListNetworksRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Network, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListNetworksResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListNetworksResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -1703,20 +1703,20 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func getNetwork(request: GetNetworkRequest) async throws
-    -> GoogleCloudEdgenetworkV1.Network
+    -> GoogleCloudEdgeNetworkV1.Network
   {
     try await self.getNetwork(request: request, options: .init())
   }
 
   public func getNetwork(
     request: GetNetworkRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Network {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Network {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getNetwork(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.Network {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Network {
     let request = GetNetworkRequest().with {
       $0.name = name
     }
@@ -1724,20 +1724,20 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func diagnoseNetwork(request: DiagnoseNetworkRequest) async throws
-    -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse
+    -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse
   {
     try await self.diagnoseNetwork(request: request, options: .init())
   }
 
   public func diagnoseNetwork(
     request: DiagnoseNetworkRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func diagnoseNetwork(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseNetworkResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseNetworkResponse {
     let request = DiagnoseNetworkRequest().with {
       $0.name = name
     }
@@ -1823,14 +1823,14 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func listSubnets(request: ListSubnetsRequest) async throws
-    -> GoogleCloudEdgenetworkV1.ListSubnetsResponse
+    -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse
   {
     try await self.listSubnets(request: request, options: .init())
   }
 
   public func listSubnets(
     request: ListSubnetsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListSubnetsResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -1844,7 +1844,7 @@ extension Clients.EdgeNetworkProtocol {
     byItem: ListSubnetsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Subnet, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListSubnetsResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListSubnetsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -1859,19 +1859,19 @@ extension Clients.EdgeNetworkProtocol {
     return try self.listSubnets(byItem: request)
   }
 
-  public func getSubnet(request: GetSubnetRequest) async throws -> GoogleCloudEdgenetworkV1.Subnet {
+  public func getSubnet(request: GetSubnetRequest) async throws -> GoogleCloudEdgeNetworkV1.Subnet {
     try await self.getSubnet(request: request, options: .init())
   }
 
   public func getSubnet(
     request: GetSubnetRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Subnet {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Subnet {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getSubnet(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.Subnet {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Subnet {
     let request = GetSubnetRequest().with {
       $0.name = name
     }
@@ -1993,14 +1993,14 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func listInterconnects(request: ListInterconnectsRequest) async throws
-    -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse
+    -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse
   {
     try await self.listInterconnects(request: request, options: .init())
   }
 
   public func listInterconnects(
     request: ListInterconnectsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -2014,7 +2014,7 @@ extension Clients.EdgeNetworkProtocol {
     byItem: ListInterconnectsRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Interconnect, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectsResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -2030,20 +2030,20 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func getInterconnect(request: GetInterconnectRequest) async throws
-    -> GoogleCloudEdgenetworkV1.Interconnect
+    -> GoogleCloudEdgeNetworkV1.Interconnect
   {
     try await self.getInterconnect(request: request, options: .init())
   }
 
   public func getInterconnect(
     request: GetInterconnectRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Interconnect {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Interconnect {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getInterconnect(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.Interconnect {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Interconnect {
     let request = GetInterconnectRequest().with {
       $0.name = name
     }
@@ -2051,20 +2051,20 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func diagnoseInterconnect(request: DiagnoseInterconnectRequest) async throws
-    -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse
+    -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse
   {
     try await self.diagnoseInterconnect(request: request, options: .init())
   }
 
   public func diagnoseInterconnect(
     request: DiagnoseInterconnectRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func diagnoseInterconnect(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseInterconnectResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseInterconnectResponse {
     let request = DiagnoseInterconnectRequest().with {
       $0.name = name
     }
@@ -2072,14 +2072,14 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func listInterconnectAttachments(request: ListInterconnectAttachmentsRequest) async throws
-    -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse
+    -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse
   {
     try await self.listInterconnectAttachments(request: request, options: .init())
   }
 
   public func listInterconnectAttachments(
     request: ListInterconnectAttachmentsRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -2094,7 +2094,7 @@ extension Clients.EdgeNetworkProtocol {
   ) throws -> any AsyncSequence<InterconnectAttachment, Swift.Error> {
     let listRpc = {
       (token: Swift.String) async throws
-        -> GoogleCloudEdgenetworkV1.ListInterconnectAttachmentsResponse in
+        -> GoogleCloudEdgeNetworkV1.ListInterconnectAttachmentsResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -2110,20 +2110,20 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func getInterconnectAttachment(request: GetInterconnectAttachmentRequest) async throws
-    -> GoogleCloudEdgenetworkV1.InterconnectAttachment
+    -> GoogleCloudEdgeNetworkV1.InterconnectAttachment
   {
     try await self.getInterconnectAttachment(request: request, options: .init())
   }
 
   public func getInterconnectAttachment(
     request: GetInterconnectAttachmentRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.InterconnectAttachment {
+  ) async throws -> GoogleCloudEdgeNetworkV1.InterconnectAttachment {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getInterconnectAttachment(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.InterconnectAttachment {
+  ) async throws -> GoogleCloudEdgeNetworkV1.InterconnectAttachment {
     let request = GetInterconnectAttachmentRequest().with {
       $0.name = name
     }
@@ -2210,14 +2210,14 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func listRouters(request: ListRoutersRequest) async throws
-    -> GoogleCloudEdgenetworkV1.ListRoutersResponse
+    -> GoogleCloudEdgeNetworkV1.ListRoutersResponse
   {
     try await self.listRouters(request: request, options: .init())
   }
 
   public func listRouters(
     request: ListRoutersRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.ListRoutersResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.ListRoutersResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
@@ -2231,7 +2231,7 @@ extension Clients.EdgeNetworkProtocol {
     byItem: ListRoutersRequest, options: GoogleCloudGax.RequestOptions
   ) throws -> any AsyncSequence<Router, Swift.Error> {
     let listRpc = {
-      (token: Swift.String) async throws -> GoogleCloudEdgenetworkV1.ListRoutersResponse in
+      (token: Swift.String) async throws -> GoogleCloudEdgeNetworkV1.ListRoutersResponse in
       throw GoogleCloudGax.RequestError.unimplemented
     }
     return GoogleCloudGax.PaginatedResponseSequence(listRpc: listRpc)
@@ -2246,19 +2246,19 @@ extension Clients.EdgeNetworkProtocol {
     return try self.listRouters(byItem: request)
   }
 
-  public func getRouter(request: GetRouterRequest) async throws -> GoogleCloudEdgenetworkV1.Router {
+  public func getRouter(request: GetRouterRequest) async throws -> GoogleCloudEdgeNetworkV1.Router {
     try await self.getRouter(request: request, options: .init())
   }
 
   public func getRouter(
     request: GetRouterRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.Router {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Router {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func getRouter(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.Router {
+  ) async throws -> GoogleCloudEdgeNetworkV1.Router {
     let request = GetRouterRequest().with {
       $0.name = name
     }
@@ -2266,20 +2266,20 @@ extension Clients.EdgeNetworkProtocol {
   }
 
   public func diagnoseRouter(request: DiagnoseRouterRequest) async throws
-    -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse
+    -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse
   {
     try await self.diagnoseRouter(request: request, options: .init())
   }
 
   public func diagnoseRouter(
     request: DiagnoseRouterRequest, options: GoogleCloudGax.RequestOptions
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse {
     throw GoogleCloudGax.RequestError.unimplemented
   }
 
   public func diagnoseRouter(
     name: Swift.String,
-  ) async throws -> GoogleCloudEdgenetworkV1.DiagnoseRouterResponse {
+  ) async throws -> GoogleCloudEdgeNetworkV1.DiagnoseRouterResponse {
     let request = DiagnoseRouterRequest().with {
       $0.name = name
     }
